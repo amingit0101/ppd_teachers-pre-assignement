@@ -1,6 +1,7 @@
 package model;
 
 public class User {
-	int ID;
-	String passwd;
+	public int ID;
+	public String passwd;
+	
 }

@@ -1,12 +1,12 @@
 package model;
 
 public class Module {
-	int ID;
-	String name;
-	String code;
-	int coeficient;
-	int semester;
-	int courses_in_week;
-	int td_in_week;
-	int tp_in_week;
+	public int ID;
+	public String name;
+	public String code;
+	public int coeficient;
+	public int semester;
+	public int courses_in_week;
+	public int td_in_week;
+	public int tp_in_week;
 }

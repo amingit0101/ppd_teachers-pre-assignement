@@ -2,7 +2,7 @@ package model;
 
 
 public class DepartmentDean {
-	 int ID;
-     Persone P=new Persone();
-     User U=new User(); 
+	 public int ID;
+	 public  Persone P=new Persone();
+	 public User U=new User(); 
 }

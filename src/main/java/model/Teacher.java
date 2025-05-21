@@ -2,9 +2,9 @@ package model;
 
 
 public class Teacher {
-	 int ID;
-	 Persone P=new Persone();
-	 String status;
-	 User U=new User(); 
-	 Assignment A=new Assignment();
+	 public int ID;
+	 public  Persone P=new Persone();
+	 public String status;
+	 public User U=new User(); 
+	 public Assignment A=new Assignment();
 }

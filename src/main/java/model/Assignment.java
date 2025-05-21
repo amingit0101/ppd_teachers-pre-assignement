@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class Assignment {
-	 int ID;
-	 LocalDate date;
-	 ArrayList<ChooseModule> choises=new ArrayList<ChooseModule>();
+	public int ID;
+	public LocalDate date;
+	public ArrayList<ChooseModule> choises=new ArrayList<ChooseModule>();
 }
