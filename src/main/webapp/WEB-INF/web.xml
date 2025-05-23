@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns="https://jakarta.ee/xml/ns/jakartaee" 
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" 
+  id="WebApp_ID" 
+  version="6.0">
+  
   <display-name>ppd_teacher_pre_assignment</display-name>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -9,7 +15,77 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
+    
+    <welcome-file>modules_table.jsp</welcome-file>
+ </welcome-file-list>
+  <!-- JSP-as-Servlet mappings from first file -->
+
+  <servlet>
+    <servlet-name>CollegeDeanJSP</servlet-name>
+    <jsp-file>/college_dean/fac_dean.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CollegeDeanJSP</servlet-name>
+    <url-pattern>/college_dean/fac_dean</url-pattern>
+  </servlet-mapping>
+
+	<servlet>
+        <servlet-name>Dean of the College</servlet-name>
+        <jsp-file>/college_dean/fac_dean.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Dean of the College</servlet-name>
+        <url-pattern>/fac_dean</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Teacher</servlet-name>
+        <jsp-file>/college_dean/teacher.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Teacher</servlet-name>
+        <url-pattern>/teacher</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Create</servlet-name>
+        <jsp-file>/college_dean/creat.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Create</servlet-name>
+        <url-pattern>/fac_dean/create</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Modify</servlet-name>
+        <jsp-file>/college_dean/modify.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Modify</servlet-name>
+        <url-pattern>/fac_dean/modify</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Remove</servlet-name>
+        <jsp-file>/college_dean/remove.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Remove</servlet-name>
+        <url-pattern>/fac_dean/remove</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Open</servlet-name>
+        <jsp-file>/college_dean/open.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Open</servlet-name>
+        <url-pattern>/fac_dean/open</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Homepage</servlet-name>
+        <jsp-file>/college_dean/mypage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Homepage</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
   <servlet>
     <description></description>
     <display-name>home_servlet</display-name>
@@ -20,6 +96,7 @@
     <servlet-name>home_servlet</servlet-name>
     <url-pattern>/home_servlet</url-pattern>
   </servlet-mapping>
+
   <servlet>
     <description></description>
     <display-name>DepartmetDeanTeacherManagment</display-name>
@@ -30,4 +107,5 @@
     <servlet-name>DepartmetDeanTeacherManagment</servlet-name>
     <url-pattern>/DepartmetDeanTeacherManagment</url-pattern>
   </servlet-mapping>
+
 </web-app>

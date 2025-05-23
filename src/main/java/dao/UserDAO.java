@@ -8,10 +8,10 @@ import model.User;
 
 public class UserDAO {
 	public static void createNewUserInDB(User U,Connection conn) throws SQLException {
-		U.ID=util.DButils.getNewId("Users");
+		U.setID(util.DButils.getNewId("Users"));
 		PreparedStatement stmt=conn.prepareStatement("insert into Users values(?,?,2)");
-		stmt.setInt(1, U.ID);
-		stmt.setString(2, U.passwd);
+		stmt.setInt(1, U.getID());
+		stmt.setString(2, U.getPasswd());
 		stmt.executeUpdate();
 		
 	}
@@ -20,9 +20,9 @@ public class UserDAO {
 				+ "password= ? ,"
 				+ "account_type = ? "
 				+ "where user_id =? ");
-		stmt.setString(1,U.passwd);
+		stmt.setString(1,U.getPasswd());
 		stmt.setInt(2,1);
-		stmt.setInt(3,U.ID);
+		stmt.setInt(3,U.getID());
 		stmt.executeUpdate();
 		
 	}

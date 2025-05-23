@@ -3,7 +3,25 @@ package model;
 
 
 public class CollegeDean {
-	public int ID;
-	public Persone P=new Persone();
-	public  User U=new User(); 
+	private int ID;
+	private Persone P=new Persone();
+	private  User U=new User();
+	public Persone getP() {
+		return P;
+	}
+	public void setP(Persone p) {
+		P = p;
+	}
+	public User getU() {
+		return U;
+	}
+	public void setU(User u) {
+		U = u;
+	}
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	} 
 }

@@ -1,0 +1,120 @@
+.cinzel {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+  }
+  
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap : 50px ; 
+    background-color: #181a1b;
+}
+.feed-form {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  
+  .feed-form input {
+    height: 54px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 15px;
+    border: none;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #4B4B4B;
+  }
+  
+  .button_submit:hover, .feed-form input:hover {
+    transform: scale(1.009);
+    box-shadow: 0px 0px 3px 0px #212529;
+  }
+  
+  .button_submit {
+    width: 100%;
+    height: 54px;
+    font-size: 14px;
+    color: white;
+    background: red;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  button {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  button:hover {
+    background-color: #fd0808;
+    box-shadow: 0px 15px 20px rgba(252, 90, 90, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  button:active {
+    transform: translateY(-1px);
+  }
+  h2{
+    margin-bottom: 0px;
+  }
+  /* From Uiverse.io by Yaya12085 */ 
+.radio-inputs {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #EEE;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: 300px;
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+  
+  .radio-inputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  
+  .radio-inputs .radio input {
+    display: none;
+  }
+  
+  .radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all .15s ease-in-out;
+  }
+  
+  .radio-inputs .radio input:checked + .name {
+    background-color: #fff;
+    font-weight: 600;
+  }

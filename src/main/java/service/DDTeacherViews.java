@@ -1,6 +1,7 @@
 package service;
 
 import java.io.PrintWriter;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,11 +36,11 @@ public class DDTeacherViews {
 	public static void buildToDisplay_teacher_in_table(ArrayList<Teacher> ts,PrintWriter out,int teacher_number) {
 		 Teacher t=ts.get(teacher_number);
 		 out.println("<tr>");
-		 out.println("<td>"+t.P.name+"</td>");
-		 out.println("<td>"+t.P.email+"</td>");
-		 out.println("<td>"+t.P.phone+"</td>");
-		 out.println("<td>"+t.P.birthday.toString()+"</td>");
-		 out.println("<td>"+t.status+"</td>");
+		 out.println("<td>"+t.getP().getName()+"</td>");
+		 out.println("<td>"+t.getP().getEmail()+"</td>");
+		 out.println("<td>"+t.getP().getPhone()+"</td>");
+		 out.println("<td>"+t.getP().getBirthday().toString()+"</td>");
+		 out.println("<td>"+t.getStatus()+"</td>");
 		 out.println("<td>");
 		 out.println(" <form method=\"post\" action=\"DepartmetDeanTeacherManagment\" class=\"btn btn-primary\">");
 		 out.println("<input name=\"position\" type=\"hidden\" value=\"modify_teacher"+teacher_number+"\"/>");
@@ -63,11 +64,12 @@ public class DDTeacherViews {
 				+ "                </section>\n"
 				);
 	}
-	public static void buildToDisplay_add_teacher_form_up_diplome(PrintWriter out) {
+	public static void buildToDisplay_add_teacher_form_up_diplome(PrintWriter out,String errorMessage) {
 		out.println("<section id=\"teachers\" class=\"content\">\n"
 				+ "                    <h2>Teachers Management</h2> \n"
 				+ "                    <!-- Teacher Form (Hidden by default) -->\n"
 				+ "                    <div id=\"teacher-form\" class=\"form-container\">\n"
+				+ "						   <h4 style=\"color:red;\">"+errorMessage+"</h4>"
 				+ "                        <h3 id=\"teacher-form-title\">Add New Teacher</h3>\n"
 				+ "                        <form id=\"teacherForm\" method=\"post\" action=\"DepartmetDeanTeacherManagment\">\n"
 				+ "                            <div class=\"form-group\">\n"
@@ -107,7 +109,7 @@ public class DDTeacherViews {
 			ArrayList<Diploma> diplomas=dao.DiplomaDAO.getDiplomas(conn);
 			for(int i=0;i<diplomas.size();i++) {
 				Diploma d=diplomas.get(i);
-				out.println("<option value=\""+d.ID+"\">"+d.diploma_name+"</option>");
+				out.println("<option value=\""+d.getId()+"\">"+d.getname()+"</option>");
 			}
 			out.println("</select>\n"
 					+ "                            </div>");
@@ -141,28 +143,28 @@ public class DDTeacherViews {
 				+ "                            <input name=\"position\" type=\"hidden\" value=\"save_edit_teacher"+teacher_num+"\" >\n"
 				+ "                            <div class=\"form-group\">\n"
 				+ "                                <label for=\"teacher-name\">Full Name</label>\n"
-				+ "                                <input type=\"text\" id=\"teacher-name \" name=\"teacher-name\" value=\""+t.P.name+"\">\n"
+				+ "                                <input type=\"text\" id=\"teacher-name \" name=\"teacher-name\" value=\""+t.getP().getName()+"\">\n"
 				+ "                            </div>\n"
 				+ "                            <div class=\"form-group\">\n"
 				+ "                                <label for=\"teacher-email\">Email</label>\n"
-				+ "                                <input type=\"email\" id=\"teacher-email\" name=\"teacher-email\" value=\""+t.P.email+"\">\n"
+				+ "                                <input type=\"email\" id=\"teacher-email\" name=\"teacher-email\" value=\""+t.getP().getEmail()+"\">\n"
 				+ "                            </div>\n"
 				+ "                            <div class=\"form-group\">\n"
 				+ "                                <label for=\"teacher-password\">Password</label>\n"
-				+ "                                <input type=\"password\" id=\"teacher-password\" name=\"teacher-password\" value=\""+t.U.passwd+"\">\n"
+				+ "                                <input type=\"password\" id=\"teacher-password\" name=\"teacher-password\" value=\""+t.getU().getPasswd()+"\">\n"
 				+ "                            </div>\n"
 				+ "                            <div class=\"form-group\">\n"
 				+ "                                <label for=\"teacher-phone\">Phone</label>\n"
-				+ "                                <input type=\"tel\" id=\"teacher-phone\"  name=\"teacher-phone\" value=\""+t.P.phone+"\">\n"
+				+ "                                <input type=\"tel\" id=\"teacher-phone\"  name=\"teacher-phone\" value=\""+t.getP().getPhone()+"\">\n"
 				+ "                            </div>\n"
 				+ "                            <div class=\"form-group\">\n"
 				+ "                              <label for=\"teacher-birthday\">Birth day</label>\n"
-				+ "                              <input type=\"date\" id=\"teacher-birthday\" name=\"teacher-birthday\" value=\""+t.P.birthday+"\">\n"
+				+ "                              <input type=\"date\" id=\"teacher-birthday\" name=\"teacher-birthday\" value=\""+t.getP().getBirthday()+"\">\n"
 				+ "                            </div>\n"
 				+ "                            <div class=\"form-group\">\n"
 				+ "                              <label for=\"teacher-status\">Status</label>\n"
 				+ "                              <select id=\"teacher-status\" name=\"teacher-status\">\n");
-				if(t.status.compareTo("actif")==0) {
+				if(t.getStatus().compareTo("actif")==0) {
 					out.println( "                                <option value=\"actif\" selected>actif</option>\n"); 	
 				    out.println( "                                <option value=\"not actif\">Not actif</option>\n");
 				}else {
@@ -181,9 +183,9 @@ public class DDTeacherViews {
 			for(int i=0;i<diplomas.size();i++) {
 				Diploma d=diplomas.get(i);
 				if(i==teacher_num)
-				   out.println("<option value=\""+d.ID+"\" selected>"+d.diploma_name+"</option>");
+				   out.println("<option value=\""+d.getId()+"\" selected>"+d.getname()+"</option>");
 				else 
-				   out.println("<option value=\""+d.ID+"\">"+d.diploma_name+"</option>");
+				   out.println("<option value=\""+d.getId()+"\">"+d.getname()+"</option>");
 			}
 			out.println("</select>\n"
 					+ "                            </div>");

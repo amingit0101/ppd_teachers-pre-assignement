@@ -17,8 +17,8 @@ public class DiplomaDAO {
 		ResultSet rs=stmt.executeQuery("SELECT * FROM diplome");
 		while(rs.next()) {
 			Diploma d=new Diploma();
-			d.ID=rs.getInt(1);
-			d.diploma_name=rs.getString(2);
+			d.setId(rs.getInt(1));
+			d.setname(rs.getString(2));
 			diplomas.add(d);
 		}
 		return diplomas;

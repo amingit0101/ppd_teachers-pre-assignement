@@ -14,9 +14,9 @@ public class DepartmentDAO {
 		pstmt.setInt(1,dep_num);
 		ResultSet rs=pstmt.executeQuery();
 		if(rs.next()) {
-			D.ID= dep_num ;
-			D.name=rs.getString(2) ;
-			D.creation_date=rs.getDate(3);
+			D.setID(dep_num) ;
+			D.setName(rs.getString(2)) ;
+			D.setCreation_date(rs.getDate(3));
 		}
 		pstmt.close();
 		DepartmentDeanDAO.getDepartmentDeanInfos(conn, D);

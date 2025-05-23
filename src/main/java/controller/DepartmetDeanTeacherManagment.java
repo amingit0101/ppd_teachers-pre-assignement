@@ -3,6 +3,7 @@ package controller;
 import jakarta.servlet.ServletException;
 
 
+
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -47,16 +48,24 @@ public class DepartmetDeanTeacherManagment extends HttpServlet {
     		model.Department D=new model.Department();
     		System.out.println(position);
     		dao.DepartmentDAO.getAllDepartmentInfosFromDataBase(conn,D,1);
-    		D.Teachers=dao.TeacherDAO.getTeachersFromDB(conn, D);
+    		D.setTeachers(dao.TeacherDAO.getTeachersFromDB(conn, D));
     		if(position==null ) {
     			service.DDTeacherService.displayTeachers(out,conn,D);
     		}
     		else if(position.compareTo("add_teacher")==0) {
-    			service.DDTeacherService.display_add_teacher_form(out,conn);
+    			service.DDTeacherService.display_add_teacher_form(out,conn,"");
     		}else if(position.compareTo("add_new_teacher_save")==0){
-    			service.DDTeacherService.addTeacher(conn,request,D);
+    			int i=service.DDTeacherService.addTeacher(conn,request,D);
+    			if(i==0) {
+    				service.DDTeacherService.display_add_teacher_form(out,
+    						conn,"The user with this email already exists");
+    				return;
+    			}else if(i==1) {
+    				service.DDTeacherService.display_add_teacher_form(out,
+    						conn," Birth day not entered");
+    				return;
+    			}
     			service.DDTeacherService.displayTeachers(out,conn,D);
-    			
     		}else if(position.compareTo("cancel_teacher")==0) {
     			service.DDTeacherService.displayTeachers(out,conn,D);
     		}else  if(position.contains("modify_teacher")){
@@ -67,15 +76,18 @@ public class DepartmetDeanTeacherManagment extends HttpServlet {
     		}else if(position.contains("save_edit_teacher")) {
     			position=position.substring(17);
     			int teacher_num=Integer.parseInt(position);
-    			service.DDTeacherService.modifyTeacher(conn,request,teacher_num,D);
+    			int i=service.DDTeacherService.addTeacher(conn,request,D);
+    			if(!service.DDTeacherService.modifyTeacher(conn,request,teacher_num,D)) {
+    				service.DDTeacherService.display_edit_teacher_form(out,conn,teacher_num,D);
+    				return;
+    			}
     			service.DDTeacherService.displayTeachers(out,conn,D);
-    			
     		}else if(position.contains("delete_teacher")) {
     			position=position.substring(14);
     			int teacher_num=Integer.parseInt(position);
     			dao.TeacherDAO.removeTeacher(conn, teacher_num, D);
-    			D.Teachers.clear();
-    			D.Teachers=dao.TeacherDAO.getTeachersFromDB(conn, D);
+    			D.getTeachers().clear();
+    			D.setTeachers(dao.TeacherDAO.getTeachersFromDB(conn, D));
     			service.DDTeacherService.displayTeachers(out,conn,D);
     		}
     	}catch (Exception e) {
